@@ -15,3 +15,8 @@ collections:
       - { label: "Titel", name: "title", widget: "string" }
       - { label: "Datum", name: "date", widget: "datetime" }
       - { label: "Inhalt", name: "body", widget: "markdown" }
+
+media_library:
+  name: uploadcare
+  config:
+    publicKey: demopublickey

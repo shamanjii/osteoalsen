@@ -1,5 +1,0 @@
-/config.yml
-  Content-Type: text/yaml
-
-/admin/*
-  Content-Security-Policy: script-src 'self' 'unsafe-eval' 'unsafe-inline' https://unpkg.com;

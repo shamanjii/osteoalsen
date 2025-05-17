@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="styles.css">
+  <title>Blogeditor</title>
+  <style>
+    body { font-family: sans-serif; display: flex; flex-direction: column; gap: 1rem; max-width: 800px; margin: auto; padding: 2rem; }
+    textarea, input, button { width: 100%; padding: 0.5rem; }
+    .flex { display: flex; gap: 1rem; }
+    #preview { flex: 1; padding: 1rem; border: 1px solid #ccc; overflow-y: auto; max-height: 400px; background: #f9f9f9; }
+    #form-section { flex: 1; }
+  </style>
+</head>
+<body>
+  <h1>📝 Blogbeitrag erstellen</h1>
+  <div class="flex">
+    <div id="form-section">
+      <input type="text" id="title" placeholder="Titel" required />
+      <input type="text" id="image" placeholder="Titelbild-Dateiname z. B. hero.jpg (aus /images)" />
+      <textarea id="body" placeholder="Inhalt in Markdown..." required></textarea>
+      <button id="submit">Veröffentlichen</button>
+    </div>
+    <div id="preview"></div>
+  </div>
+  <p id="status"></p>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script>
+    const titleInput = document.getElementById('title');
+    const bodyInput = document.getElementById('body');
+    const preview = document.getElementById('preview');
+    const status = document.getElementById('status');
+
+    bodyInput.addEventListener('input', () => {
+      preview.innerHTML = marked.parse(bodyInput.value);
+    });
+
+    document.getElementById('submit').onclick = async () => {
+      const title = titleInput.value.trim();
+      const body = bodyInput.value.trim();
+      const image = document.getElementById('image').value.trim();
+
+      if (!title || !body) return alert("Titel und Inhalt erforderlich!");
+
+      const filename = title.toLowerCase().replace(/[^a-z0-9]+/g, '-') + ".md";
+      const content = `---\ntitle: "${title}"\ndate: ${new Date().toISOString().split('T')[0]}\nimage: "${image}"\n---\n\n${body}\n`;
+
+      const token = prompt("GitHub PAT eingeben:");
+      if (!token) return;
+
+      const res = await fetch("https://api.github.com/repos/shamanjii/osteoalsen/contents/blog/" + filename, {
+        method: "PUT",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/vnd.github.v3+json"
+        },
+        body: JSON.stringify({
+          message: `Blogpost erstellt: ${title}`,
+          content: btoa(unescape(encodeURIComponent(content)))
+        })
+      });
+
+      const json = await res.json();
+      status.textContent = res.ok ? `✅ Veröffentlicht als /blog/${filename}` : `❌ Fehler: ${json.message}`;
+    };
+  </script>
+</body>
+</html>

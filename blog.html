@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Blog</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
+    img { max-width: 100%; margin-bottom: 1rem; }
+  </style>
 </head>
+
 <body>
-  <h1>Mein Blog</h1>
-  <ul>
-    <li><a href="/blog/erster-artikel.md">Mein erster Beitrag</a></li>
-    <li><a href="/blog/zweiter-artikel.md">Zweiter Artikel</a></li>
-  </ul>
+  <h1>📚 Blogübersicht</h1>
+  <div id="posts" class="post-grid"></div>
+  <script src="scripts/load-posts.js"></script>
 </body>
 </html>

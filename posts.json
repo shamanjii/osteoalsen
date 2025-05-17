@@ -1,0 +1,16 @@
+fetch('posts.json')
+  .then(res => res.json())
+  .then(posts => {
+    document.getElementById('posts').innerHTML = posts.map(post => `
+      <div class="post">
+        <h2><a href="/${post.file.replace(/^\//, '')}">${post.title}</a></h2>
+        <p><em>${post.date}</em></p>
+        ${post.image ? `<img src="/${post.image.replace(/^\//, '')}" alt="">` : ''}
+        <p>${post.excerpt}</p>
+      </div>
+    `).join('');
+  })
+  .catch(err => {
+    document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';
+    console.error(err);
+  });

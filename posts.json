@@ -1,16 +1,23 @@
-fetch('posts.json')
-  .then(res => res.json())
-  .then(posts => {
-    document.getElementById('posts').innerHTML = posts.map(post => `
-      <div class="post">
-        <h2><a href="/${post.file.replace(/^\//, '')}">${post.title}</a></h2>
-        <p><em>${post.date}</em></p>
-        ${post.image ? `<img src="/${post.image.replace(/^\//, '')}" alt="">` : ''}
-        <p>${post.excerpt}</p>
-      </div>
-    `).join('');
-  })
-  .catch(err => {
-    document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';
-    console.error(err);
-  });
+[
+  {
+    "title": "Mein erster Beitrag",
+    "date": "2025-05-17",
+    "file": "blog/erster-artikel.md",
+    "image": "images/beispiel.jpg",
+    "excerpt": "Kurzvorschau des ersten Beitrags."
+  },
+  {
+    "title": "Zweiter Beitrag",
+    "date": "2025-05-18",
+    "file": "blog/zweiter-artikel.md",
+    "image": "images/zweitesbild.jpg",
+    "excerpt": "Noch ein Beitrag als Test."
+  },
+  {
+    "title": "Dritter Beitrag",
+    "date": "2025-05-19",
+    "file": "blog/dritter-artikel.md",
+    "image": "images/drittesbild.jpg",
+    "excerpt": "Dritter Testbeitrag im Blog."
+  }
+]

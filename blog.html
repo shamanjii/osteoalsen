@@ -1,18 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
 <head>
   <meta charset="UTF-8">
+  <title>Blog | Osteopathie Alsen</title>
   <link rel="stylesheet" href="styles.css">
-  <title>{{ title }}</title>
   <style>
-    body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
-    img { max-width: 100%; margin-bottom: 1rem; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfdfc;
+      color: #1a1a1a;
+    }
+    header {
+      background: #111;
+      color: white;
+      padding: 1rem 2rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+    .banner {
+      background: #f5f5f5;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem 1rem;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .blog-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      padding: 2rem 1rem 3rem 1rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    .post-preview {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.2s ease-in-out;
+      text-decoration: none;
+      color: inherit;
+      padding: 2rem;
+      border: 1px solid #e0e0e0;
+      display: block;
+    }
+    .post-preview:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      transform: translateY(-2px) scale(1.01);
+    }
+    .post-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #0088cc;
+      margin-bottom: 0.5rem;
+    }
+    .post-date {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+    .post-excerpt {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    .post-image {
+      max-width: 100%;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
   </style>
 </head>
-
 <body>
-  <h1>📚 Blogübersicht</h1>
-  <div id="posts" class="post-grid"></div>
-  <script src="scripts/load-posts.js"></script>
+  <header>
+    <a href="index.html" style="color: white; text-decoration: none;">OSTEOPATHIE ALSEN</a> – Blog
+  </header>
+  <div class="banner">Blogübersicht</div>
+  <main class="blog-wrapper" id="posts">
+    <!-- Beiträge werden hier geladen -->
+  </main>
+  <script>
+    fetch('posts.json')
+      .then(res => res.json())
+      .then(posts => {
+        console.log('Geladene Posts:', posts);
+        document.getElementById('posts').innerHTML = posts.map(post => `
+          <a class="post-preview" href="post.html?file=${encodeURIComponent(post.file)}">
+            ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
+            <div class="post-title">${post.title}</div>
+            <div class="post-date">${post.date}</div>
+            <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
+          </a>
+        `).join('');
+        console.log('HTML:', document.getElementById('posts').innerHTML);
+      })
+      .catch(err => {
+        document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';
+        console.error(err);
+      });
+  </script>
 </body>
 </html>

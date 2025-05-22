@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Beitrag</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 2rem; background: #fff; }
+    .post-title { font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem; }
+    .post-date { color: #666; font-size: 1rem; margin-bottom: 1.5rem; font-style: italic; }
+    .post-image { max-width: 100%; border-radius: 0.5rem; margin-bottom: 1rem; }
+    .post-content { line-height: 1.7; }
+    a { color: #0088cc; }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <a href="blog.html" style="color:#0088cc;">← Zurück zur Übersicht</a>
+  <div id="post">
+    <!-- Beitrag wird hier geladen -->
+  </div>
+  <script>
+    // Hilfsfunktion zum Parsen von Frontmatter
+    function parseFrontmatter(md) {
+      const match = md.match(/^---\s*([\s\S]*?)---/);
+      const meta = {};
+      let body = md;
+      if (match) {
+        match[1].split('\n').forEach(line => {
+          const [key, ...rest] = line.split(':');
+          if (key && rest.length) meta[key.trim()] = rest.join(':').trim().replace(/^"|"$/g, '');
+        });
+        body = md.slice(match[0].length).trim();
+      }
+      return { meta, body };
+    }
+
+    // Hole Dateiname aus URL
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get('file');
+    if (!file) {
+      document.getElementById('post').innerHTML = '<p>Kein Beitrag ausgewählt.</p>';
+    } else {
+      fetch(file)
+        .then(res => res.text())
+        .then(md => {
+          const { meta, body } = parseFrontmatter(md);
+          document.title = meta.title || 'Beitrag';
+          document.getElementById('post').innerHTML = `
+            <div class="post-title">${meta.title || ''}</div>
+            <div class="post-date">${meta.date || ''}</div>
+            ${meta.image ? `<img class="post-image" src="${meta.image}" alt="">` : ''}
+            <div class="post-content">${marked.parse(body)}</div>
+          `;
+        })
+        .catch(() => {
+          document.getElementById('post').innerHTML = '<p>Beitrag konnte nicht geladen werden.</p>';
+        });
+    }
+  </script>
+</body>
+</html>

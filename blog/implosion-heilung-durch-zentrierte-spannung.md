@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Implosion – Heilung durch zentrierte Spannung
 
 Lebendige Systeme bauen Ordnung nicht durch Expansion auf, sondern durch **Zentrierung**. Dort, wo Energie zur Mitte strebt, entsteht **Struktur, Fokus, Vitalität**. In der Feldphysik nennt man diesen Vorgang **Implosion**.
 

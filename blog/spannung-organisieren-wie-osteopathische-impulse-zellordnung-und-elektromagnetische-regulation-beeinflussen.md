@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Spannung organisieren – Wie osteopathische Impulse Zellordnung und elektromagnetische Regulation beeinflussen
 
 Osteopathie versteht den Körper als dynamisches Spannungsfeld. Jeder Gewebekontakt beeinflusst nicht nur die mechanischen, sondern auch die **elektrophysiologischen und elektromagnetischen Ordnungsprozesse** des Systems.  
 In diesem Beitrag geht es um die Frage: **Wie wirken osteopathische Impulse auf zelluläre Organisation – bis hinein in den Kern?** Und: **Welche Rolle spielt dabei das elektromagnetische Feld?**

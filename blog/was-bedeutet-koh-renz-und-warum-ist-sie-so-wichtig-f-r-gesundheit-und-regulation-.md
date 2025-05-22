@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Was bedeutet Kohärenz – und warum ist sie so wichtig für Gesundheit und Regulation?
 
 Kohärenz ist ein Begriff, der in verschiedenen wissenschaftlichen und therapeutischen Bereichen verwendet wird. Ob in der Neurowissenschaft, Physik, Psychologie oder Herzforschung – überall beschreibt Kohärenz dasselbe Grundprinzip: **Ordnung im Fluss**.
 

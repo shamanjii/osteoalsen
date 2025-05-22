@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Das Herzfeld – das elektromagnetische Zentrum des Menschen
 
 Das menschliche Herz ist weit mehr als eine muskuläre Pumpe. Es ist ein hochdifferenzierter, rhythmisch arbeitender Taktgeber – und vor allem: der stärkste elektromagnetische Sender des Körpers. Das sogenannte **Herzfeld** beeinflusst nicht nur biologische Vorgänge, sondern wirkt auch weit über den Körper hinaus – auf andere Menschen, Räume und Systeme.
 

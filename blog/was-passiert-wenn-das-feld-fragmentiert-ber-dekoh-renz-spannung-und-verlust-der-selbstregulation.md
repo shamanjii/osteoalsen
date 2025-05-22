@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Was passiert, wenn das Feld fragmentiert? Über Dekohärenz, Spannung und Verlust der Selbstregulation
 
 Kohärenz ist ein Zustand rhythmischer Ordnung. Doch was geschieht, wenn dieser Zustand verloren geht? Wenn der Mensch unter Druck steht, sich abgeschnitten fühlt oder dauerhaft im Stress ist?
 

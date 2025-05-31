@@ -73,7 +73,7 @@
           document.getElementById('post').innerHTML = `
             <div class="post-title">${meta.title || ''}</div>
             <div class="post-date">${meta.date || ''}</div>
-            ${meta.image ? `<img class="post-image" src="${meta.image}" alt="">` : ''}
+            ${meta.image ? `<img class="post-image" src="${meta.image}" alt="${meta.alt || ''}">` : ''}
             <div class="post-content">${marked.parse(body)}</div>
           `;
           return meta;

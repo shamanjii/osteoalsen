@@ -4,7 +4,6 @@ date: 2025-05-18
 image: ""
 ---
 
-# Was ist ein elektromagnetisches Feld – und warum hat der Mensch eins?
 
 Viele Menschen nehmen intuitiv wahr, dass sie nicht nur aus Fleisch und Blut bestehen. Begriffe wie „Ausstrahlung“, „Präsenz“ oder „Energie“ deuten darauf hin, dass es etwas gibt, das über die rein körperliche Ebene hinausgeht. Tatsächlich ist dieses „etwas“ physikalisch messbar: das elektromagnetische Feld des Menschen.
 

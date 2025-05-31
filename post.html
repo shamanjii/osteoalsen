@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <title>Beitrag</title>
   <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="" id="meta-description">
+  <meta property="og:title" content="" id="og-title">
+  <meta property="og:description" content="" id="og-description">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="" id="og-url">
+  <meta property="og:image" content="" id="og-image">
+  <script type="application/ld+json" id="jsonld"></script>
   <style>
     body { font-family: sans-serif; max-width: 800px; margin: auto; padding: 2rem; background: #fff; }
     .post-title { font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem; }
@@ -46,6 +53,22 @@
         .then(md => {
           const { meta, body } = parseFrontmatter(md);
           document.title = meta.title || 'Beitrag';
+          const desc = (meta.description || body.split('\n').slice(0, 2).join(' ')).replace(/\*|#/g, '').slice(0, 160);
+          document.getElementById('meta-description').setAttribute('content', desc);
+          document.getElementById('og-title').setAttribute('content', meta.title || '');
+          document.getElementById('og-description').setAttribute('content', desc);
+          document.getElementById('og-url').setAttribute('content', window.location.href);
+          if (meta.image) document.getElementById('og-image').setAttribute('content', meta.image);
+          const ld = {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": meta.title || '',
+            "datePublished": meta.date || '',
+            "description": desc,
+            "url": window.location.href
+          };
+          if (meta.image) ld.image = meta.image;
+          document.getElementById('jsonld').textContent = JSON.stringify(ld);
           document.getElementById('post').innerHTML = `
             <div class="post-title">${meta.title || ''}</div>
             <div class="post-date">${meta.date || ''}</div>

@@ -4,6 +4,23 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css">
   <title>{{ title }}</title>
+  <meta name="description" content="{{ description }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{ url }}">
+  {{#if image}}<meta property="og:image" content="/images/{{ image }}">{{/if}}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ title }}",
+    "datePublished": "{{ date }}",
+    "description": "{{ description }}",
+    "image": "/images/{{ image }}",
+    "url": "{{ url }}"
+  }
+  </script>
   <style>
     body { font-family: sans-serif; padding: 2rem; max-width: 800px; margin: auto; }
     img { max-width: 100%; margin-bottom: 1rem; }

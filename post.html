@@ -26,6 +26,7 @@
   <div id="post">
     <!-- Beitrag wird hier geladen -->
   </div>
+  <div id="post-nav" style="margin-top:2rem; display:flex; justify-content:space-between;"></div>
   <script>
     // Hilfsfunktion zum Parsen von Frontmatter
     function parseFrontmatter(md) {
@@ -75,6 +76,26 @@
             ${meta.image ? `<img class="post-image" src="${meta.image}" alt="">` : ''}
             <div class="post-content">${marked.parse(body)}</div>
           `;
+          return meta;
+        })
+        .then(meta => {
+          return fetch('posts.json')
+            .then(res => res.json())
+            .then(posts => ({ meta, posts }));
+        })
+        .then(({ meta, posts }) => {
+          posts.sort((a, b) => new Date(a.date) - new Date(b.date));
+          const index = posts.findIndex(p => p.file === file);
+          let html = '';
+          if (index > 0) {
+            const prev = posts[index - 1];
+            html += `<a href="post.html?file=${encodeURIComponent(prev.file)}">&laquo; ${prev.title}</a>`;
+          }
+          if (index < posts.length - 1) {
+            const next = posts[index + 1];
+            html += `<a style="margin-left:auto" href="post.html?file=${encodeURIComponent(next.file)}">${next.title} &raquo;</a>`;
+          }
+          document.getElementById('post-nav').innerHTML = html;
         })
         .catch(() => {
           document.getElementById('post').innerHTML = '<p>Beitrag konnte nicht geladen werden.</p>';

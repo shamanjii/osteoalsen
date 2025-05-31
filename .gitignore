@@ -1,0 +1,11 @@
+# Ignore macOS system files
+.DS_Store
+
+# Node modules
+node_modules/
+
+# log files
+*.log
+
+# Temporary files
+*~

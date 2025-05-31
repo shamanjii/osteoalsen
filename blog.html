@@ -91,16 +91,18 @@
     fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
-        console.log('Geladene Posts:', posts);
-        document.getElementById('posts').innerHTML = posts.map(post => `
-          <a class="post-preview" href="post.html?file=${encodeURIComponent(post.file)}">
+        document.getElementById('posts').innerHTML = posts.map(post => {
+          const file = post.file.replace(/^blog\//, '').replace(/\.md$/, '.html');
+          const url = `dist/blog/${file}`;
+          return `
+          <a class="post-preview" href="${url}">
             ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
             <div class="post-title">${post.title}</div>
             <div class="post-date">${post.date}</div>
             <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
           </a>
-        `).join('');
-        console.log('HTML:', document.getElementById('posts').innerHTML);
+          `;
+        }).join('');
       })
       .catch(err => {
         document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';

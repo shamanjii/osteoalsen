@@ -1,8 +1,21 @@
-document.getElementById('posts').innerHTML = `
-  <div class="post">
-    <h2><a href="/blog/erster-artikel.md">Mein erster Beitrag</a></h2>
-    <p><em>2025-05-17</em></p>
-    <img src="/images/beispiel.jpg" alt="">
-    <p>Kurzvorschau des Inhalts...</p>
-  </div>
-`;
+fetch('posts.json')
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById('posts');
+    if (!container) return;
+    container.innerHTML = posts.map(post => `
+      <a class="post-preview" href="post.html?file=${encodeURIComponent(post.file)}">
+        ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
+        <div class="post-content">
+          <div class="post-title">${post.title}</div>
+          <div class="post-date">${post.date}</div>
+          <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
+        </div>
+      </a>
+    `).join('');
+  })
+  .catch(err => {
+    const container = document.getElementById('posts');
+    if (container) container.innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';
+    console.error(err);
+  });

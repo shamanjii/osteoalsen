@@ -13,7 +13,7 @@
   <article class="post">
   <h1 id="post-title">{{ title }}</h1>
   <p id="post-date"><em>{{ date }}</em></p>
-  {{#if image}}<img id="post-image" src="/images/{{ image }}" alt="Titelbild">{{/if}}
+    {{#if image}}<img id="post-image" src="/images/{{ image }}" alt="{{ alt }}">{{/if}}
   <div id="post-content">
     {{ content }}
   </div>

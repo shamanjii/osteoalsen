@@ -27,6 +27,7 @@ The command looks for all `.md` files inside `blog/` and recreates `posts.json` 
    title: "Mein Titel"
    date: 2025-05-18
    image: "optional-bild.jpg"
+   alt: "Kurze Bildbeschreibung"
    ---
    
    Hier folgt der eigentliche Inhalt in Markdown.

@@ -14,6 +14,7 @@ const post1Content = `---
 title: Temp Post 1
 date: 2022-01-01
 image: img1.jpg
+alt: Bild 1
 ---
 line1
 line2
@@ -26,6 +27,7 @@ const post2Content = `---
 title: Temp Post 2
 date: 2022-02-02
 image: img2.jpg
+alt: Bild 2
 ---
 a
 b
@@ -50,11 +52,13 @@ try {
   assert.strictEqual(p1.title, 'Temp Post 1');
   assert.strictEqual(p1.date, '2022-01-01');
   assert.strictEqual(p1.image, 'img1.jpg');
+  assert.strictEqual(p1.alt, 'Bild 1');
 
   assert(p2, 'Post 2 not found');
   assert.strictEqual(p2.title, 'Temp Post 2');
   assert.strictEqual(p2.date, '2022-02-02');
   assert.strictEqual(p2.image, 'img2.jpg');
+  assert.strictEqual(p2.alt, 'Bild 2');
 
   console.log('All tests passed.');
 } finally {

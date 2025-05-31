@@ -36,6 +36,7 @@ const posts = files.map(filename => {
     date: meta.date || '',
     file: `blog/${filename}`,
     image: meta.image || '',
+    alt: meta.alt || '',
     excerpt
   };
 });

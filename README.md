@@ -46,3 +46,7 @@ python3 -m http.server 8000
 
 Then open [http://localhost:8000/blog.html](http://localhost:8000/blog.html) in your browser. You can also serve the root to access the other pages such as `index.html`.
 
+
+## Redirects
+
+The repository contains an `.htaccess` file that defines redirects for the old `/impressum` and `/datenschutz` paths. Your server must support Apache-style redirects (or an equivalent configuration) for these rules to function.

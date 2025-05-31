@@ -13,6 +13,7 @@
   </style>
 </head>
 <body>
+<main>
   <h1>📝 Blogbeitrag erstellen</h1>
   <div class="flex">
     <div id="form-section">
@@ -63,6 +64,7 @@
       const json = await res.json();
       status.textContent = res.ok ? `✅ Veröffentlicht als /blog/${filename}` : `❌ Fehler: ${json.message}`;
     };
+</main>
   </script>
 </body>
 </html>

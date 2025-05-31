@@ -16,9 +16,11 @@
 </head>
 <body>
   <a href="blog.html" style="color:#0088cc;">← Zurück zur Übersicht</a>
-  <div id="post">
-    <!-- Beitrag wird hier geladen -->
-  </div>
+  <main>
+    <article id="post">
+      <!-- Beitrag wird hier geladen -->
+    </article>
+  </main>
   <script>
     // Hilfsfunktion zum Parsen von Frontmatter
     function parseFrontmatter(md) {
@@ -47,8 +49,8 @@
           const { meta, body } = parseFrontmatter(md);
           document.title = meta.title || 'Beitrag';
           document.getElementById('post').innerHTML = `
-            <div class="post-title">${meta.title || ''}</div>
-            <div class="post-date">${meta.date || ''}</div>
+            <h1 class="post-title">${meta.title || ''}</h1>
+            <time class="post-date">${meta.date || ''}</time>
             ${meta.image ? `<img class="post-image" src="${meta.image}" alt="">` : ''}
             <div class="post-content">${marked.parse(body)}</div>
           `;

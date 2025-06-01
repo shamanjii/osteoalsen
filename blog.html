@@ -6,11 +6,10 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: #fdfdfc;
-      color: #1a1a1a;
+      background: var(--color-bg);
+      color: var(--color-text);
     }
     header {
       background: #111;
@@ -95,21 +94,6 @@
     fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
-<<<<<<< HEAD
-        document.getElementById('posts').innerHTML = posts.map(post => {
-          const file = post.file.replace(/^blog\//, '').replace(/\.md$/, '.html');
-          const url = `dist/blog/${file}`;
-          return `
-          <a class="post-preview" href="${url}">
-            ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
-            <div class="post-title">${post.title}</div>
-            <div class="post-date">${post.date}</div>
-            <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
-          </a>
-          `;
-        }).join('');
-=======
-        console.log('Geladene Posts:', posts);
         document.getElementById('posts').innerHTML = posts.map(post => `
           <article class="post-preview">
             <a href="post.html?file=${encodeURIComponent(post.file)}">
@@ -120,8 +104,6 @@
             </a>
           </article>
         `).join('');
-        console.log('HTML:', document.getElementById('posts').innerHTML);
->>>>>>> codex/review-html-structure-and-adjust-css
       })
       .catch(err => {
         document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';

@@ -1,18 +1,29 @@
+@import url('https://onecdn.io/font-storage/epilogue/epilogue.css');
+@import url('https://onecdn.io/font-storage/instrument-sans/instrument-sans.css');
+@import url('https://onecdn.io/font-storage/yesteryear/yesteryear.css');
+
+:root {
+  --color-bg: #f2f2f1;
+  --color-text: #2b2a2b;
+  --color-accent: #b8c6c6;
+  --color-border: #dddddd;
+}
+
 body {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Instrument Sans', 'Epilogue', sans-serif;
   max-width: 900px;
   margin: auto;
   padding: 2rem;
-  background: #ffffff;
-  color: #222222;
+  background: var(--color-bg);
+  color: var(--color-text);
 }
 
 h1, h2, h3 {
-  color: #2a2a2a;
+  color: var(--color-text);
 }
 
 a {
-  color: #0088cc;
+  color: var(--color-accent);
   text-decoration: none;
 }
 
@@ -25,10 +36,10 @@ article {
 }
 
 .post {
-  border: 1px solid #dddddd;
+  border: 1px solid var(--color-border, #dddddd);
   padding: 1rem;
   border-radius: 8px;
-  background: #fafafa;
+  background: #ffffff;
   margin-bottom: 1rem;
 }
 

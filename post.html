@@ -23,18 +23,10 @@
 </head>
 <body>
   <a href="blog.html" style="color:#0088cc;">← Zurück zur Übersicht</a>
-<<<<<<< HEAD
   <div id="post">
     <!-- Beitrag wird hier geladen -->
   </div>
   <div id="post-nav" style="margin-top:2rem; display:flex; justify-content:space-between;"></div>
-=======
-  <main>
-    <article id="post">
-      <!-- Beitrag wird hier geladen -->
-    </article>
-  </main>
->>>>>>> codex/review-html-structure-and-adjust-css
   <script>
     // Hilfsfunktion zum Parsen von Frontmatter
     function parseFrontmatter(md) {
@@ -79,15 +71,9 @@
           if (meta.image) ld.image = meta.image;
           document.getElementById('jsonld').textContent = JSON.stringify(ld);
           document.getElementById('post').innerHTML = `
-<<<<<<< HEAD
-            <div class="post-title">${meta.title || ''}</div>
-            <div class="post-date">${meta.date || ''}</div>
-            ${meta.image ? `<img class="post-image" src="${meta.image}" alt="${meta.alt || ''}">` : ''}
-=======
             <h1 class="post-title">${meta.title || ''}</h1>
             <time class="post-date">${meta.date || ''}</time>
             ${meta.image ? `<img class="post-image" src="${meta.image}" alt="">` : ''}
->>>>>>> codex/review-html-structure-and-adjust-css
             <div class="post-content">${marked.parse(body)}</div>
           `;
           return meta;

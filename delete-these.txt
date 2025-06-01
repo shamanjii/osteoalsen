@@ -1,0 +1,14 @@
+  codex/add-apache-style-redirects-in-root
+  codex/add-faqpage-schema-to-index.html
+  codex/add-robots.txt-and-confirm-sitemap.xml-links
+  codex/button-mehr-erfahren-scrollen-lassen
+  codex/create-readme.md-for-repository
+  codex/create-tests-directory-with-node-script
+  codex/delete-.ds_store-and-update-.gitignore
+  codex/delete-httrack-comments-from-html-files
+  codex/ersetze--rundum-osteopathie--in-oa-blog.html
+  codex/funktion-für--mehr-erfahren--button-hinzufügen
+  codex/locate-and-verify-anchor-id-match
+  codex/modify-generate-posts-json.js-for-dynamic-front-matter-detec
+  codex/update-load-posts.js-to-fetch-posts.json
+  codex/überprüfe-404-html-dateien

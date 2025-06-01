@@ -45,11 +45,13 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       overflow: hidden;
       transition: all 0.2s ease-in-out;
-      text-decoration: none;
-      color: inherit;
       padding: 2rem;
       border: 1px solid #e0e0e0;
+    }
+    .post-preview a {
       display: block;
+      text-decoration: none;
+      color: inherit;
     }
     .post-preview:hover {
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
@@ -81,26 +83,45 @@
 </head>
 <body>
   <header>
-    <a href="index.html" style="color: white; text-decoration: none;">OSTEOPATHIE ALSEN</a> – Blog
+    <h1><a href="index.html" style="color: white; text-decoration: none;">OSTEOPATHIE ALSEN</a> – Blog</h1>
   </header>
-  <div class="banner">Blogübersicht</div>
-  <main class="blog-wrapper" id="posts">
-    <!-- Beiträge werden hier geladen -->
+  <div class="banner"><h2>Blogübersicht</h2></div>
+  <main>
+    <section class="blog-wrapper" id="posts">
+      <!-- Beiträge werden hier geladen -->
+    </section>
   </main>
   <script>
     fetch('posts.json')
       .then(res => res.json())
       .then(posts => {
-        console.log('Geladene Posts:', posts);
-        document.getElementById('posts').innerHTML = posts.map(post => `
-          <a class="post-preview" href="post.html?file=${encodeURIComponent(post.file)}">
+<<<<<<< HEAD
+        document.getElementById('posts').innerHTML = posts.map(post => {
+          const file = post.file.replace(/^blog\//, '').replace(/\.md$/, '.html');
+          const url = `dist/blog/${file}`;
+          return `
+          <a class="post-preview" href="${url}">
             ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
             <div class="post-title">${post.title}</div>
             <div class="post-date">${post.date}</div>
             <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
           </a>
+          `;
+        }).join('');
+=======
+        console.log('Geladene Posts:', posts);
+        document.getElementById('posts').innerHTML = posts.map(post => `
+          <article class="post-preview">
+            <a href="post.html?file=${encodeURIComponent(post.file)}">
+              ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
+              <h3 class="post-title">${post.title}</h3>
+              <time class="post-date">${post.date}</time>
+              <p class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</p>
+            </a>
+          </article>
         `).join('');
         console.log('HTML:', document.getElementById('posts').innerHTML);
+>>>>>>> codex/review-html-structure-and-adjust-css
       })
       .catch(err => {
         document.getElementById('posts').innerHTML = '<p>Beiträge konnten nicht geladen werden.</p>';

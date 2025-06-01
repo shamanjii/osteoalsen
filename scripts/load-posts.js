@@ -3,8 +3,11 @@ fetch('posts.json')
   .then(posts => {
     const container = document.getElementById('posts');
     if (!container) return;
-    container.innerHTML = posts.map(post => `
-      <a class="post-preview" href="post.html?file=${encodeURIComponent(post.file)}">
+    container.innerHTML = posts.map(post => {
+      const file = post.file.replace(/^blog\//, '').replace(/\.md$/, '.html');
+      const url = `dist/blog/${file}`;
+      return `
+      <a class="post-preview" href="${url}">
         ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
         <div class="post-content">
           <div class="post-title">${post.title}</div>
@@ -12,7 +15,8 @@ fetch('posts.json')
           <div class="post-excerpt">${post.excerpt.replace(/^#+\s?/, '').replace(/[*_`#]/g, '')}</div>
         </div>
       </a>
-    `).join('');
+      `;
+    }).join('');
   })
   .catch(err => {
     const container = document.getElementById('posts');

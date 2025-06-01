@@ -16,6 +16,14 @@ a {
   text-decoration: none;
 }
 
+main {
+  display: block;
+}
+
+article {
+  display: block;
+}
+
 .post {
   border: 1px solid #dddddd;
   padding: 1rem;

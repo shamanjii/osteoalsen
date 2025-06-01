@@ -4,8 +4,7 @@ fetch('posts.json')
     const container = document.getElementById('posts');
     if (!container) return;
     container.innerHTML = posts.map(post => {
-      const file = post.file.replace(/^blog\//, '').replace(/\.md$/, '.html');
-      const url = `dist/blog/${file}`;
+      const url = `post.html?file=${encodeURIComponent(post.file)}`;
       return `
       <a class="post-preview" href="${url}">
         ${post.image ? `<img class="post-image" src="${post.image}" alt="">` : ''}
